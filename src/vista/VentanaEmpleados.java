@@ -44,4 +44,30 @@ public class VentanaEmpleados extends JFrame {
         setSize(780, 540);
         setLocationRelativeTo(null);
     }
+
+    private JPanel construirFormulario() {
+        JPanel campos = new JPanel(new GridLayout(5, 2, 8, 8));
+        campos.add(new JLabel("Cédula:"));
+        campos.add(txtCedula);
+        campos.add(new JLabel("Nombre completo:"));
+        campos.add(txtNombre);
+        campos.add(new JLabel("Salario base:"));
+        campos.add(txtSalario);
+        campos.add(new JLabel("Tipo de empleado:"));
+        campos.add(cmbTipo);
+        campos.add(new JLabel("Bonificación (solo administrativos):"));
+        campos.add(txtBonificacion);
+        txtBonificacion.setEnabled(false);
+
+        JPanel botones = new JPanel(new FlowLayout());
+        JButton[] listaBotones = {btnAgregar, btnBuscar, btnActualizar, btnEliminar, btnLimpiar, btnEliminar};
+        for (JButton boton : listaBotones) {
+            botones.add(boton);
+        }
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+        panel.add(campos, BorderLayout.CENTER);
+        panel.add(botones, BorderLayout.SOUTH);
+        return panel;
+    }
 }
