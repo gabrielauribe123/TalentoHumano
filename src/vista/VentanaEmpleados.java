@@ -109,5 +109,7 @@ public class VentanaEmpleados extends JFrame {
         lblResumen.setText("Empleados: " + datosTabla.getRowCount() + " | Total nómina: " + formatoPesos(controlador.calcularTotalNomina()));
     }
 
-
+    private String formatoPesos(double valor) {
+        return String.format("$ %,.0f" valor)
+    }
 }
