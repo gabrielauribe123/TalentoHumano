@@ -50,4 +50,17 @@ public class EmpleadoControlador {
         }
         return puntos <= 1;
     }
+
+    private String validar(String cedula, String nombre, String salario, String tipo, String bonificacion) {
+        if (cedula.isEmpty() || nombre.isEmpty()) {
+            return "La cédula y el nombre son obligatorios.";
+        }
+        if (!esNumeroValido(salario)) {
+            return "El salario debe ser un número positivo (Sin punto de miles).";
+        }
+        if (tipo.equals("Administrativo") && !esNumeroValido(bonificacion)) {
+            return "La bonificación debe ser un número positivo.";
+        }
+        return null;
+    }
 }
