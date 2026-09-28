@@ -70,4 +70,8 @@ public class VentanaEmpleados extends JFrame {
         panel.add(botones, BorderLayout.SOUTH);
         return panel;
     }
+
+    private String texto(JTextField campo) {
+        return campo.getText().trim();
+    }
 }
