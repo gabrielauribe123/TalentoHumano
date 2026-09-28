@@ -112,4 +112,7 @@ public class EmpleadoControlador {
         return "No existe ningún empleado con la cédula " + cedula + ".";
     }
 
+    public ArrayList<EmpleadoBase> obtenerEmpleados() {
+        return repositorio.listarTodos();
+    }
 }
