@@ -121,5 +121,12 @@ public class VentanaEmpleados extends JFrame {
                 txtBonificacion.setText("");
             }
         });
+
+        btnAgregar.addActionListener(e -> mostrarResultado(controlador.agregarEmpleado(texto(txtCedula), texto(txtNombre), texto(txtSalario), tipoSeleccionado(), texto(txtBonificacion))));
+        btnActualizar.addActionListener(e -> mostrarResultado(controlador.actualizarEmpleado(texto(txtCedula), texto(txtNombre), texto(txtSalario), tipoSeleccionado(), texto(txtBonificacion))));
+        btnBuscar.addActionListener(e ->  buscar());
+        btnEliminar.addActionListener(e -> eliminar());
+        btnLimpiar.addActionListener(e -> limpiarFormulario());
+        btnHistorial.addActionListener(e -> mostrarHistorial());
     }
 }
