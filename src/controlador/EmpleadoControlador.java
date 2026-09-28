@@ -21,7 +21,7 @@ public class EmpleadoControlador {
 
     private void cargarDatosDePrueba() {
         String[] cedulas = {"1001", "1002", "1003", "1004"};
-        String[] npombres = {"Krístopher", "Olga", "Valentina", "Benson"};
+        String[] nombres = {"Krístopher", "Olga", "Valentina", "Benson"};
         double[] salarios = {1800000, 2500000, 1750000, 3200000};
 
         for (int i = 0; i < cedulas.length; i++) {
@@ -29,7 +29,7 @@ public class EmpleadoControlador {
             if (i % 2 == 0) {
                 empleado = new EmpleadoBase(cedulas[i], nombres[i], salarios[i]);
             }else {
-                empleado = new EmpleadoAdministrativo(cedulas[i], nombres[i], salarios[i], 300000)
+                empleado = new EmpleadoAdministrativo(cedulas[i], nombres[i], salarios[i], 300000);
             }
             repositorio.agregar(empleado);
         }
@@ -64,7 +64,7 @@ public class EmpleadoControlador {
         return null;
     }
 
-    private EmpleadoBase construirEmpleado(String cedula, String nombre, String tipo, String bonificacion) {
+    private EmpleadoBase construirEmpleado(String cedula, String nombre, String salario,  String tipo, String bonificacion) {
         double salarioBase = Double.parseDouble(salario);
         if (tipo.equals("Administrativo")) {
             double bono = Double.parseDouble(bonificacion);
@@ -72,4 +72,18 @@ public class EmpleadoControlador {
         }
         return new EmpleadoBase(cedula, nombre, salarioBase);
     }
+
+    public String agregarEmpleado(String cedula, String nombre, String salario, String tipo, String bonificacion) {
+        String error = validar(cedula, nombre, salario, tipo, bonificacion);
+        if (error != null) {
+            return error;
+        }
+        EmpleadoBase nuevo = construirEmpleado(cedula, nombre, salario, tipo, bonificacion);
+        if (repositorio.agregar(nuevo)) {
+            historial.add("AGREGADO: " + cedula + "." + nombre);
+            return "Empleado agregado correctamente.";
+        }
+        return "Ya existe un empleado con la cédula " + cedula + ".";
+    }
+
 }
