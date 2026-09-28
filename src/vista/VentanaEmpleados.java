@@ -129,4 +129,17 @@ public class VentanaEmpleados extends JFrame {
         btnLimpiar.addActionListener(e -> limpiarFormulario());
         btnHistorial.addActionListener(e -> mostrarHistorial());
     }
+
+    private void mostrarResultado(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        refrescarTabla();
+    }
+
+    private void buscar() {
+        String cedula = texto(txtCedula);
+        if (cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Escribe una cédula para buscar.");
+            return;
+        }
+    }
 }
