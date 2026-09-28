@@ -123,4 +123,8 @@ public class EmpleadoControlador {
         }
         return total;
     }
+
+    public ArrayList<String> obtenerHistorial() {
+        return historial;
+    }
 }
