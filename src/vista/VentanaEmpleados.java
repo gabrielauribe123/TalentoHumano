@@ -74,4 +74,8 @@ public class VentanaEmpleados extends JFrame {
     private String texto(JTextField campo) {
         return campo.getText().trim();
     }
+
+    private String tipoSeleccionado() {
+        return (String) cmbTipo.getSelectedItem();
+    }
 }
