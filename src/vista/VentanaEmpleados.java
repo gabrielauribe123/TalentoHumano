@@ -141,5 +141,10 @@ public class VentanaEmpleados extends JFrame {
             JOptionPane.showMessageDialog(this, "Escribe una cédula para buscar.");
             return;
         }
+        EmpleadoBase empleado = controlador.buscarEmpleo(cedula);
+        if (empleado == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró ningún empleado con la cédula " + cedula + ".");
+            return;
+        }
     }
 }
