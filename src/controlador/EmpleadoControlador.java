@@ -21,7 +21,7 @@ public class EmpleadoControlador {
 
     private void cargarDatosDePrueba() {
         String[] cedulas = {"1001", "1002", "1003", "1004"};
-        String[] nombres = {"Krístopher", "Olga", "Valentina", "Benson"};
+        String[] nombres = {"Valentinita", "Olga", "Benson", "Krístopher"};
         double[] salarios = {1800000, 2500000, 1750000, 3200000};
 
         for (int i = 0; i < cedulas.length; i++) {

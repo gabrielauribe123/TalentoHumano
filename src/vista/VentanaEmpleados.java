@@ -99,7 +99,7 @@ public class VentanaEmpleados extends JFrame {
     private void refrescarTabla() {
         datosTabla.setRowCount(0);
         for (EmpleadoBase empleado : controlador.obtenerEmpleados()) {
-            object[] fila = {
+            Object[] fila = {
                     empleado.getCedula(),
                     empleado.getNombre(),
                     empleado.getTipo(),
