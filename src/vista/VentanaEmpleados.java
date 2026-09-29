@@ -155,4 +155,13 @@ public class VentanaEmpleados extends JFrame {
             txtBonificacion.setText(String.format("%.0f", administrativo.getBonificacion()));
         }
     }
+
+    private void eliminar() {
+        String cedula = texto(txtCedula);
+        int respuesta = JOptionPane.showConfirmDialog(this,"¿Seguro que deseas eliminar al empleado con cédula " + cedula + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_NO_OPTION) {
+            mostrarResultado(controlador.eliminarEmpleado(cedula));
+            limpiarFormulario();
+        }
+    }
 }
