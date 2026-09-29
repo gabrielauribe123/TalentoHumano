@@ -118,9 +118,9 @@ public class VentanaEmpleados extends JFrame {
 
     private void conectarEventos() {
         cmbTipo.addActionListener(e -> {
-            boolean esAdministrativo = tipoSeleccionado().equals("Administrativo");
-            txtBonificacion.setEnabled(esAdministrativo);
-            if (!esAdministrativo) {
+            boolean esExtra = tipoSeleccionado().equals("Administrativo");
+            txtBonificacion.setEnabled(esExtra);
+            if (esExtra) {
                 txtBonificacion.setText("");
             }
         });
@@ -155,6 +155,9 @@ public class VentanaEmpleados extends JFrame {
         if (empleado instanceof EmpleadoAdministrativo) {
             EmpleadoAdministrativo administrativo = (EmpleadoAdministrativo) empleado;
             txtBonificacion.setText(String.format("%.0f", administrativo.getBonificacion()));
+        }else if (empleado instanceof EmpleadoComercial) {
+            EmpleadoComercial comercial = (EmpleadoComercial) empleado;
+            txtBonificacion.setText(String.format("%.0f", comercial.getPorcentajeComision()));
         }
     }
 
