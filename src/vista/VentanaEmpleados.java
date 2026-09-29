@@ -7,6 +7,7 @@ import modelo.EmpleadoBase;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class VentanaEmpleados extends JFrame {
 
@@ -163,5 +164,14 @@ public class VentanaEmpleados extends JFrame {
             mostrarResultado(controlador.eliminarEmpleado(cedula));
             limpiarFormulario();
         }
+    }
+
+    private void limpiarFormulario() {
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtSalario.setText("");
+        txtBonificacion.setText("");
+        cmbTipo.setSelectedItem(0);
+        txtCedula.requestFocus();
     }
 }
