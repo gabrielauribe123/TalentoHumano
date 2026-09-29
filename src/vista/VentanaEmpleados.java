@@ -174,4 +174,17 @@ public class VentanaEmpleados extends JFrame {
         cmbTipo.setSelectedItem(0);
         txtCedula.requestFocus();
     }
+
+    private void mostrarHistorial() {
+        ArrayList<String> historial = controlador.obtenerHistorial();
+        if (historial.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Aún no hay operaciones registradas.");
+            return;
+        }
+        String texto = "";
+        for (int i = 0; i < historial.size(); i++) {
+            texto += (i + 1) + "." + historial.get(i) + "\n";
+        }
+        JOptionPane.showMessageDialog(this, texto, "Historial de operaciones", JOptionPane.INFORMATION_MESSAGE);
+    }
 }
