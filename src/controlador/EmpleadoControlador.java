@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EmpleadoControlador {
 
-    public static final String[] TIPOS_EMPLADO = {"Operativo", "Administrador", "Comercial"};
+    public static final String[] TIPOS_EMPLADO = {"Operativo", "Administrativo", "Comercial"};
 
     private final RepositorioEmpleados repositorio;
     private final ArrayList<String> historial;
@@ -63,6 +63,9 @@ public class EmpleadoControlador {
             return "La bonificación debe ser un número positivo.";
         }
         if (tipo.equals("Comercial")) {
+            if (!esNumeroValido(bonificacion)) {
+                return "La comisión debe ser un número positivo.";
+            }
             double valor = Double.parseDouble(bonificacion);
             if (valor > 50) {
                 return "La comisión no puede superar el 50%.";

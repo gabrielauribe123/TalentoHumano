@@ -18,6 +18,7 @@ public class VentanaEmpleados extends JFrame {
     private final JTextField txtNombre = new JTextField();
     private final JTextField txtSalario = new JTextField();
     private final JTextField txtBonificacion = new JTextField();
+    private final JLabel lblBonificacion = new JLabel("Bonificación / comisión %:");
 
     private final JComboBox<String> cmbTipo = new JComboBox<>(EmpleadoControlador.TIPOS_EMPLADO);
 
@@ -59,12 +60,12 @@ public class VentanaEmpleados extends JFrame {
         campos.add(txtSalario);
         campos.add(new JLabel("Tipo de empleado:"));
         campos.add(cmbTipo);
-        campos.add(new JLabel("Bonificación / comisión %:"));
+        campos.add(lblBonificacion);
         campos.add(txtBonificacion);
         txtBonificacion.setEnabled(false);
 
         JPanel botones = new JPanel(new FlowLayout());
-        JButton[] listaBotones = {btnAgregar, btnBuscar, btnActualizar, btnEliminar, btnLimpiar, btnEliminar};
+        JButton[] listaBotones = {btnAgregar, btnBuscar, btnActualizar, btnEliminar, btnLimpiar, btnHistorial};
         for (JButton boton : listaBotones) {
             botones.add(boton);
         }
@@ -118,9 +119,18 @@ public class VentanaEmpleados extends JFrame {
 
     private void conectarEventos() {
         cmbTipo.addActionListener(e -> {
-            boolean esExtra = tipoSeleccionado().equals("Administrativo");
+            String tipo = tipoSeleccionado();
+            boolean esExtra = tipo.equals("Administrativo") || tipo.equals("Comercial");
             txtBonificacion.setEnabled(esExtra);
             if (esExtra) {
+                if (tipo.equals("Comercial")) {
+                    lblBonificacion.setText("Comiión %:");
+                }else {
+                    lblBonificacion.setText("Bonificación %:");
+                }
+                txtBonificacion.requestFocus();
+            }else {
+                lblBonificacion.setText("Bonificación / Comisión %:");
                 txtBonificacion.setText("");
             }
         });
