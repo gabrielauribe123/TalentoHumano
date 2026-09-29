@@ -1,5 +1,6 @@
 package vista;
 
+import modelo.EmpleadoComercial;
 import controlador.EmpleadoControlador;
 import modelo.EmpleadoAdministrativo;
 import modelo.EmpleadoBase;
@@ -58,7 +59,7 @@ public class VentanaEmpleados extends JFrame {
         campos.add(txtSalario);
         campos.add(new JLabel("Tipo de empleado:"));
         campos.add(cmbTipo);
-        campos.add(new JLabel("Bonificación (solo administrativos):"));
+        campos.add(new JLabel("Bonificación / comisión %:"));
         campos.add(txtBonificacion);
         txtBonificacion.setEnabled(false);
 
